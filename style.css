@@ -1,0 +1,17 @@
+.flex-container {
+    display: flex;
+    width: 480px;
+    flex-wrap: wrap;
+    background-color: #d5d5d5;
+    margin: 0px auto ;
+}
+
+.flex-container .box {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #454241;
+}
