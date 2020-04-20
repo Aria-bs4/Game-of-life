@@ -3,16 +3,83 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Game of life</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    
+    <div class="container">
+        <div class="panel">
+            <div id='settingList'>
+                <div id="gamePic">
+                    <img src="logo.png">
+                </div>
+                <div id="About" class="items newcolor"><span></span> About</div>
+                <div id="settings" class="items last newcolor"><span></span>Setings</div>
+            </div>
+            <div id="selectArea">
+                <section id="forsetting">
+                    <div class="settingItem newcolor" num="0"><spna class="flash"></spna>World</div>
+                    <div class="settingItem newcolor" num="1">Color</div>
+                    <div class="settingItem newcolor" num="2">revolution</div>
+                </section>
+            </div>
+            <div id='settingArea'>
+                <section id="aboutArea" class="areapaper" whocalld="About">About</section>
+                <section id="settingChange" class="areapaper" whocalld="settings">
+                    <div id="worldpaper" class="paperin_setting">
+                        <div id="allinputs" class="mainside">
+                            <div class="inpubox">Vertical :
+                                <input type="text" id="worldvertical" class="inputs">
+                                <span id="worldvertical_span">this is span box</span>
+                            </div>
+                            <div class="inpubox">Horizontal :
+                                <input type="text" id="worldhorizontal" class="inputs">
+                                <span id="worldhorizontal_span">thisis span box</span>
+                            </div>
+                            <div class="inpubox">Size of each life :
+                                <input type="text" id="world_number" class="inputs">
+                                <span id="world_number_span">thisis span box</span>
+                            </div>
+                            <div class="inpubox" style="position: relative;">
+                                <button id="save_world" class="newcolor">Creat</button>
+                                <button id="cancel_world" >Cancel</button>
+                            </div>
+                        </div>
+                        <!-- sidebox to put help in setting world -->
+                        <div id="sideworld" class="sidepaper">
+                            sidebox and image
+                        </div>
+                    </div>
+                    <div id="colorpaper" class="paperin_setting">colooors</div>
+                    <div id="revolutionpaper" class="paperin_setting">revoulution tmimng</div>
+                </section>
+            </div>
+        </div>
+    </div>
 
     <div id="lifeBox" class="flex-container"></div>
-   
-    <script src="myjs.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- <script src="myjs.js"></script> -->
+    <script src="setting.js"></script>
+    <script>
+        $(".settingItem").click(function(){
+            console.log($(this).attr("num"));
+            var num = $(this).attr("num");
+            $("#settingChange").animate({top:  (num* -420).toString()},600);
+            $(".flash").animate({top:  (num* 42) + "px"},600);
+        });
+        
+    </script>
+
 </body>
 
 </html>

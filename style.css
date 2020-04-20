@@ -1,3 +1,16 @@
+@import "header.css";
+
+body {
+    direction: ltr;
+    text-align: left;
+    background-color: #cdcdcd;
+}
+
+
+
+
+
+
 .flex-container {
     display: flex;
     width: 480px;
