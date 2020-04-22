@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Game of life</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="view/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <div class="panel">
             <div id='settingList'>
                 <div id="gamePic">
-                    <img src="logo.png">
+                    <img src="view/pics/logo.png">
                 </div>
                 <div id="About" class="items newcolor"><span></span> About</div>
                 <div id="settings" class="items last newcolor"><span></span>Setings</div>
@@ -68,8 +68,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <!-- <script src="myjs.js"></script> -->
-    <script src="setting.js"></script>
+    <script src="view/javascripts/myjs.js"></script>
+    <script src="view/javascripts/setting.js"></script>
     <script>
         $(".settingItem").click(function(){
             console.log($(this).attr("num"));

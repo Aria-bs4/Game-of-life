@@ -125,7 +125,7 @@ div#settingArea{
     margin: 0px;
     height: 420px;
     border: 1px solid var(--color3);
-    background-image: url("background.png");
+    background-image: url("../pics/background.png");
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -148,6 +148,7 @@ div#settingArea .areapaper .paperin_setting {
     /* background-color: rgba(255, 0, 0, 0.205); */
     display: flex;
     padding: 20px;
+    cursor: default;
 }
 
 .mainside{
