@@ -199,7 +199,7 @@ div#settingArea .areapaper .paperin_setting .inpubox #cancel_world{
 }
 
 div#settingArea .areapaper .paperin_setting .inpubox .inputs{
-    display: block;
+    /* display: block; */
     border-radius: 3px;
     margin-bottom: 0px;
     margin-left: 10px;
@@ -215,10 +215,46 @@ div#settingArea .areapaper .paperin_setting .inpubox .inputs{
     color: var(--color4-1);
 }
 
-div#settingArea .areapaper .paperin_setting .inpubox span{
+div#settingArea .areapaper .paperin_setting .inpubox span.warning_span{
     margin-left: 10px;
     font-size: 12px;
     line-height: 14px;
     cursor: default;
+    display: block;
 }
+
+
+.inpubox input[type="radio"]{
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+
+.labels_size{
+    color: var(--color4);
+    position: relative;
+    display: block;
+    font-size: 12px;
+    margin: 0;
+    margin-left: 14px;
+    cursor: pointer;
+    padding-left: 8px;
+    width: fit-content;
+}
+
+.labels_size .label_span{
+    width: 7px;
+    height: 7px;
+    background-color: var(--color2);
+    position: absolute;
+    left: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.labels_size.checked .label_span{
+    background-color: var(--color3);
+}
+
 

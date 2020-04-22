@@ -21,7 +21,9 @@
             </div>
             <div id="selectArea">
                 <section id="forsetting">
-                    <div class="settingItem newcolor" num="0"><spna class="flash"></spna>World</div>
+                    <div class="settingItem newcolor" num="0">
+                        <spna class="flash"></spna>World
+                    </div>
                     <div class="settingItem newcolor" num="1">Color</div>
                     <div class="settingItem newcolor" num="2">revolution</div>
                 </section>
@@ -31,21 +33,32 @@
                 <section id="settingChange" class="areapaper" whocalld="settings">
                     <div id="worldpaper" class="paperin_setting">
                         <div id="allinputs" class="mainside">
-                            <div class="inpubox">Vertical :
-                                <input type="text" id="worldvertical" class="inputs">
-                                <span id="worldvertical_span">this is span box</span>
-                            </div>
-                            <div class="inpubox">Horizontal :
-                                <input type="text" id="worldhorizontal" class="inputs">
-                                <span id="worldhorizontal_span">thisis span box</span>
-                            </div>
                             <div class="inpubox">Size of each life :
-                                <input type="text" id="world_number" class="inputs">
-                                <span id="world_number_span">thisis span box</span>
+
+                                <input type="radio" id="small_life" name="size" value="8px">
+                                <input type="radio" id="mediom_life" name="size" value="15px" checked>
+                                <input type="radio" id="big_life" name="size" value="22px">
+
+                                <label for="small_life" class="labels_size">Small<span
+                                        class="label_span"></span></label>
+                                <label for="mediom_life" class="labels_size checked">Mediom<span
+                                        class="label_span"></span></label>
+                                <label for="big_life" class="labels_size">Big<span class="label_span"></span></label>
+                                <!-- <input type="text" id="world_number" class="inputs">
+                                    <span id="world_number_span">thisis span box</span> -->
+
+                            </div>
+                            <div class="inpubox">Vertical :<br>
+                                <input type="text" id="worldvertical" class="inputs">
+                                <span id="worldvertical_span" class="warning_span">this is span box</span>
+                            </div>
+                            <div class="inpubox">Horizontal :<br>
+                                <input type="text" id="worldhorizontal" class="inputs">
+                                <span id="worldhorizontal_span" class="warning_span">thisis span box</span>
                             </div>
                             <div class="inpubox" style="position: relative;">
                                 <button id="save_world" class="newcolor">Creat</button>
-                                <button id="cancel_world" >Cancel</button>
+                                <button id="cancel_world">Cancel</button>
                             </div>
                         </div>
                         <!-- sidebox to put help in setting world -->
@@ -68,16 +81,29 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <script src="view/javascripts/myjs.js"></script>
+    <!-- <script src="view/javascripts/myjs.js"></script> -->
     <script src="view/javascripts/setting.js"></script>
     <script>
-        $(".settingItem").click(function(){
-            console.log($(this).attr("num"));
-            var num = $(this).attr("num");
-            $("#settingChange").animate({top:  (num* -420).toString()},600);
-            $(".flash").animate({top:  (num* 42) + "px"},600);
+
+        $(".labels_size").on("click", function () {
+            $(".labels_size").removeClass("checked");
+            $(this).addClass("checked");
         });
-        
+
+        $('#save_world').on("click", function () {
+            // get radio buttn size
+            var size_input = $("input[type='radio']:checked").val();
+            console.log(size_input);
+
+            var verical_input = $('#worldvertical').val();
+            console.log(verical_input);
+
+            var horizontal_input = $('#worldhorizontal').val();
+            console.log(horizontal_input);
+
+        });
+
+
     </script>
 
 </body>

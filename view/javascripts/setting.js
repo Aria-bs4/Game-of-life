@@ -165,7 +165,15 @@ $(document).ready(function () {
    
     $(".newcolor").hover(
         function(){ $(this).css("background-color", "var(--color2-hover)") },
-        function(){ $(this).css("background-color", "var(--color2)") });
+        function(){ $(this).css("background-color", "var(--color2)") }
+    );
+
+    $(".settingItem").click(function(){
+        console.log($(this).attr("num"));
+        var num = $(this).attr("num");
+        $("#settingChange").animate({top:  (num* -420).toString()},600);
+        $(".flash").animate({top:  (num* 42) + "px"},600);
+        });
 
 
     //************************************** */
@@ -194,5 +202,7 @@ $(document).ready(function () {
            return false;
        }
        // // $(this).
-   });
+    });
+
+   
 });
