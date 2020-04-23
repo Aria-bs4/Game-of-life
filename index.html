@@ -7,6 +7,7 @@
     <title>Game of life</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="view/css/style.css" rel="stylesheet" type="text/css">
+    <style id="stylebox"></style>
 </head>
 
 <body>
@@ -35,9 +36,9 @@
                         <div id="allinputs" class="mainside">
                             <div class="inpubox">Size of each life :
 
-                                <input type="radio" id="small_life" name="size" value="8px">
-                                <input type="radio" id="mediom_life" name="size" value="15px" checked>
-                                <input type="radio" id="big_life" name="size" value="22px">
+                                <input type="radio" id="small_life" name="size" value="8">
+                                <input type="radio" id="mediom_life" name="size" value="15" checked>
+                                <input type="radio" id="big_life" name="size" value="22">
 
                                 <label for="small_life" class="labels_size">Small<span
                                         class="label_span"></span></label>
@@ -49,12 +50,14 @@
 
                             </div>
                             <div class="inpubox">Vertical :<br>
-                                <input type="text" id="worldvertical" class="inputs">
+                                <input type="text" id="worldvertical" class="inputs" value="18"><span class="alarm"
+                                    id="verti_alarm"></span>
                                 <span id="worldvertical_span" class="warning_span">this is span box</span>
                             </div>
                             <div class="inpubox">Horizontal :<br>
-                                <input type="text" id="worldhorizontal" class="inputs">
-                                <span id="worldhorizontal_span" class="warning_span">thisis span box</span>
+                                <input type="text" id="worldhorizontal" class="inputs" value="15"><span class="alarm"
+                                    id="horiz_alarm"></span>
+                                <span id="worldhorizontal_span" class="warning_span">min = 15&emsp;max = 50</span>
                             </div>
                             <div class="inpubox" style="position: relative;">
                                 <button id="save_world" class="newcolor">Creat</button>
@@ -73,7 +76,11 @@
         </div>
     </div>
 
-    <div id="lifeBox" class="flex-container"></div>
+    <div class="container">
+        <div class="con_of_box">
+            <div id="lifeBox" class="flex-container"></div>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -81,30 +88,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <!-- <script src="view/javascripts/myjs.js"></script> -->
-    <script src="view/javascripts/setting.js"></script>
-    <script>
+    <script src="view/javascripts/myjs.js"></script>
+    <!-- <script src="view/javascripts/setting.js"></script> -->
 
-        $(".labels_size").on("click", function () {
-            $(".labels_size").removeClass("checked");
-            $(this).addClass("checked");
-        });
-
-        $('#save_world').on("click", function () {
-            // get radio buttn size
-            var size_input = $("input[type='radio']:checked").val();
-            console.log(size_input);
-
-            var verical_input = $('#worldvertical').val();
-            console.log(verical_input);
-
-            var horizontal_input = $('#worldhorizontal').val();
-            console.log(horizontal_input);
-
-        });
-
-
-    </script>
 
 </body>
 

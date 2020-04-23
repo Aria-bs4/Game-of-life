@@ -9,22 +9,23 @@ body {
 
 
 
-
+.con_of_box{
+    background-color: var(--color1);
+    border: 1px solid var(--color3);
+    padding: 15px 0px;
+}
 
 .flex-container {
     display: flex;
-    width: 480px;
+    width: 380px;
     flex-wrap: wrap;
-    background-color: #d5d5d5;
+    /* background-color: var(--color2); */
     margin: 0px auto ;
 }
 
 .flex-container .box {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin: 2px;
     text-align: center;
-    line-height: 20px;
-    font-size: 12px;
-    color: #454241;
 }

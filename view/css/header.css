@@ -215,6 +215,14 @@ div#settingArea .areapaper .paperin_setting .inpubox .inputs{
     color: var(--color4-1);
 }
 
+div#settingArea .areapaper .paperin_setting .inpubox .alarm{
+    margin-left: 10px;
+    font-size: 12px;
+    line-height: 14px;
+    cursor: default;
+    color: crimson;
+}
+
 div#settingArea .areapaper .paperin_setting .inpubox span.warning_span{
     margin-left: 10px;
     font-size: 12px;

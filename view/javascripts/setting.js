@@ -7,9 +7,6 @@ $(document).ready(function () {
     var isvisibleabout = false;
     var isfinishabout = true;
 
-    var sit = new Array(2);
-    var return_element,returnseting;
-
     var store ;
     var triger;
     var answer = new Object();
@@ -43,9 +40,9 @@ $(document).ready(function () {
     });
 
     function clickonset(){
-        returnseting = close_setting();
+        close_setting();
         open_seting();
-        return returnseting;
+       
     };
 
     function clickonabout(){
@@ -67,7 +64,6 @@ $(document).ready(function () {
                 isfinishabout = true;
                 isvisibleabout = false;
             });
-            //return $("#aboutArea");
         }
         if(!isvisibleabout && !$('#aboutArea').is(":visible")){
             //open about paper
@@ -114,7 +110,6 @@ $(document).ready(function () {
                                 $("#"+answer[1]).trigger( "click" );
                             }
                         });
-                        return $('#settingArea');
                     }
                 });
             });
@@ -187,22 +182,29 @@ $(document).ready(function () {
        var keycode = parseInt(event.keyCode);
        if( (keycode <= 105) && (keycode >= 96)  ){
            //here chould put number in what i want
+           $(this).next().html("");
+
            if( !($(this).val()) && (keycode == 96) ){
                console.log("zero");
+               $(this).next().html("cant be 0");
                //span should be you cant put zero size
                return false;
            }
            
        }else if(keycode == 8){
-           
+        
        }else{
            // clinet input character
-          
+           $(this).next().html("just number");
            console.log("character");
            return false;
        }
+
+    
        // // $(this).
     });
+
+    
 
    
 });
