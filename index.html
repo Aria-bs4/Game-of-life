@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="view/css/style.css" rel="stylesheet" type="text/css">
     <style id="stylebox"></style>
+    <style id="colorstyle"></style>
 </head>
 
 <body>
@@ -32,6 +33,7 @@
             <div id='settingArea'>
                 <section id="aboutArea" class="areapaper" whocalld="About">About</section>
                 <section id="settingChange" class="areapaper" whocalld="settings">
+                    <!-- world setting -->
                     <div id="worldpaper" class="paperin_setting">
                         <div id="allinputs" class="mainside">
                             <div class="inpubox">Size of each life :
@@ -50,18 +52,18 @@
 
                             </div>
                             <div class="inpubox">Vertical :<br>
-                                <input type="text" id="worldvertical" class="inputs" value="18"><span class="alarm"
+                                <input type="text" id="worldvertical" class="inputs numeric" value="18"><span class="alarm"
                                     id="verti_alarm"></span>
                                 <span id="worldvertical_span" class="warning_span">this is span box</span>
                             </div>
                             <div class="inpubox">Horizontal :<br>
-                                <input type="text" id="worldhorizontal" class="inputs" value="15"><span class="alarm"
+                                <input type="text" id="worldhorizontal" class="inputs numeric" value="15"><span class="alarm"
                                     id="horiz_alarm"></span>
                                 <span id="worldhorizontal_span" class="warning_span">min = 15&emsp;max = 50</span>
                             </div>
                             <div class="inpubox" style="position: relative;">
-                                <button id="save_world" class="newcolor">Creat</button>
-                                <button id="cancel_world">Cancel</button>
+                                <button id="save_world" class="newcolor sub_btn">Creat</button>
+                                <button id="cancel_world" class="cancel_set">Cancel</button>
                             </div>
                         </div>
                         <!-- sidebox to put help in setting world -->
@@ -69,8 +71,51 @@
                             sidebox and image
                         </div>
                     </div>
-                    <div id="colorpaper" class="paperin_setting">colooors</div>
-                    <div id="revolutionpaper" class="paperin_setting">revoulution tmimng</div>
+                    <!-- color setting -->
+                    <div id="colorpaper" class="paperin_setting">
+                        <div id="main_color" class="mainside">
+                            <div class="inpubox">Background Color :<br>
+                                <input type="text" class="inputs colorin" id="back_color" value="1d3e53"><span class="color_box" id="back_color_alarm"></span>
+                                <span id="back_color_span" class="warning_span">Format HEX</span>
+                            </div>
+                            <div class="inpubox">Live Cell Color :<br>
+                                <input type="text" class="inputs colorin" id="live_color" value="254b62"><span class="color_box" id="live_color_alarm"></span>
+                                <span id="live_color_span" class="warning_span">Format HEX</span>
+                            </div>
+                            <div class="inpubox">Dead Cell Color :<br>
+                                <input type="text" class="inputs colorin" id="dead_color" value="77abb7"><span class="color_box" id="dead_color_alarm"></span>
+                                <span id="dead_color_span" class="warning_span">Format HEX</span>
+                            </div>
+                            <div class="inpubox" style="position: relative;">
+                                <button id="change_color" class="newcolor sub_btn">Finish</button>
+                                <button id="cancel_corol" class="cancel_set">Cancel</button></div>
+                        </div>
+                        <div id="side_color" class="sidepaper">
+                            sidebox and image
+                        </div>
+                    </div>
+                    <!-- revolution setting -->
+                    <div id="revolutionpaper" class="paperin_setting">
+                        <div id="main_revolution" class="mainside">
+                            <div class="inpubox">Revolution Time :<br>
+                                <input type="text" class="inputs numeric" id="rev_time" value="800"><span class="alarm" id="rev_time_alarm"></span>
+                                <span id="rev_time_span" class="warning_span">min = 500&emsp;max = 5000</span>
+                            </div>
+                            <div class="inpubox">Chanse of live :<br>
+                                <input type="text" class="inputs numeric" id="rev_chance" value="20"><span class="alarm" id="rev_chance_alarm" ></span>
+                                <span id="rev_chance_span" class="warning_span">min = 10&emsp;max = 70</span>
+                            </div>
+                            <div class="inpubox"></div>
+                            <!--reserve-->
+                            <div class="inpubox" style="position: relative;">
+                                <button id="change_revolution" class="sub_btn">Finish</button>
+                                <button id="cancel_revolution" class="cancel_set">Cancel</button>
+                            </div>
+                        </div>
+                        <div id="side_revolution" class="sidepaper">
+                            sidebox and image
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>

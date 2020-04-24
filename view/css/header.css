@@ -163,7 +163,7 @@ div#settingArea .areapaper .paperin_setting {
     /* background-color: rgba(255, 0, 0, 0.205); */
 }
 
-div#settingArea .areapaper .paperin_setting .inpubox{
+div#settingArea .areapaper .inpubox{
     /* margin: 20px; */
     /* margin-bottom: 31px; */
     margin-left: 20px;
@@ -188,12 +188,12 @@ div#settingArea .areapaper .paperin_setting .inpubox{
     outline: none;
 }
 
-div#settingArea .areapaper .paperin_setting .inpubox #save_world{
+div#settingArea .areapaper .paperin_setting .inpubox .sub_btn{
     background-color: var(--color2);
     border: .8px solid var(--color3);
 }
 
-div#settingArea .areapaper .paperin_setting .inpubox #cancel_world{
+div#settingArea .areapaper .paperin_setting .inpubox .cancel_set{
     background-color: transparent;
     left: 25%;
 }
@@ -265,4 +265,13 @@ div#settingArea .areapaper .paperin_setting .inpubox span.warning_span{
     background-color: var(--color3);
 }
 
+.color_box{
+    margin-left: 10px;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    border: .3px solid var(--color4-1);
+    position: relative;
+    top: 4px;
+}
 

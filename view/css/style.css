@@ -28,4 +28,9 @@ body {
     height: 15px;
     margin: 2px;
     text-align: center;
+    background-color: var(--color4);
+}
+
+.flex-container .box.live{
+    background-color: var(--color2);
 }

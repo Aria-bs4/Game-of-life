@@ -5,7 +5,8 @@ window.onload = function() {
     var lifeBox = document.getElementById("lifeBox");
     var vertical = 20;
     var horizental = 20;
-    var chanceOfLife = 2;
+    var chanceOfLife = 20;
+    var rev_timing = 800;
     var timer;
     var world = new Array();
     var newworld = new Array();
@@ -23,7 +24,7 @@ window.onload = function() {
     var triger;
     var answer = new Object();
 
-    // var max_width = window.innerWidth - 20;
+    
     var max_width = parseInt( $(".panel").width());
     var min_width = 350;
     var txt = "";
@@ -35,6 +36,18 @@ window.onload = function() {
 
     var min_horzi = 15;
     var max_horzi = 50;
+
+    //revolution
+    var min_rev_time = 500;
+    var max_rev_time = 5000;
+    var min_rev_chance = 10;
+    var max_rev_chance = 70;
+
+    //color
+    //set color at first
+    $("#back_color_alarm").css("background-color","var(--color1)");
+    $("#live_color_alarm").css("background-color","var(--color2)");
+    $("#dead_color_alarm").css("background-color","var(--color4)");
 
 
 
@@ -55,19 +68,18 @@ window.onload = function() {
             newworld[x] = new Array();
             for(var y = 0 ; y < vertical ; ++y){
                 newworld[x][y] = 0;
-                world[x][y] = Math.random()*10 > chanceOfLife ? 0 : 1 ;
+                world[x][y] = Math.random()*100 > chanceOfLife ? 0 : 1 ;
                 var box = document.createElement('div');
-                box.id = x.toString() +"."+ y.toString() ;
+                box.id = x.toString() +","+ y.toString() ;
                 box.classList.add("box");
                 // box.innerHTML = (x*vertical) + y;
                 if(world[x][y])
-                    box.style.backgroundColor = "var(--color2)";
-                else
-                    box.style.backgroundColor = "var(--color4)";
+                    box.classList.add("live");
+                else{}
                 lifeBox.appendChild(box);
             }
         }
-        timer = setInterval(function(){ revolution() },1000);
+        timer = setInterval(function(){ revolution() },rev_timing);
     }
 
     function revolution(){
@@ -97,14 +109,14 @@ window.onload = function() {
     }
 
     function rebuildworld(){
-        var box = document.getElementsByClassName("box");
+        var box = $("#lifeBox").children();
         for(var x = 0 ; x < horizental ; ++x){
             for(var y = 0 ; y < vertical ; ++y){
                 var num = (x*vertical) + y;
                 if(world[x][y])
-                    box[num].style.backgroundColor = "var(--color2)";
+                    box[num].classList.add("live");
                 else
-                    box[num].style.backgroundColor = "var(--color4)";
+                    box[num].classList.remove("live");
             }
         }
     }
@@ -287,7 +299,7 @@ window.onload = function() {
     //*********** world setting *****************/
     //********check inputs are num or not*******/
     //******************************************/
-    $('.inputs').keydown(function(event){
+    $('.numeric').keydown(function(event){
         console.log(event.keyCode);    // it works
        // console.log($(this).val());    // it works
        //if( isFinite( $(this).val() )){
@@ -385,6 +397,11 @@ window.onload = function() {
         }
     });
 
+    //*********click on cancel */
+    $(".cancel_set").click(function(){
+        close_setting();
+    });
+
     //**********submmit setting world ********************
     $('#save_world').on("click", function () {
         var size_input = $("input[type='radio']:checked").val();
@@ -407,10 +424,86 @@ window.onload = function() {
         }
 
     });
-    //*********click on cancel */
-    $("#cancel_world").click(function(){
-        close_setting();
+
+    //***************revolution blur********* */
+    $("#rev_time").blur(function(){
+        if (!$(this).val()) {
+            // console.log("it cant be free");
+            $(this).next().html("");
+            $(this).val(min_rev_time);
+        } else {
+            if ($(this).val() < min_rev_time || $(this).val() > max_rev_time) {
+                // $(this).val(min_verti);
+                $(this).next().html("choose a number in range");
+            } else {
+                $(this).next().html("");
+            }
+        }
     });
+
+    $("#rev_chance").blur(function(){
+        if (!$(this).val()) {
+            // console.log("it cant be free");
+            $(this).next().html("");
+            $(this).val(min_rev_chance);
+        } else {
+            if ($(this).val() < min_rev_chance || $(this).val() > max_rev_chance) {
+                // $(this).val(min_verti);
+                $(this).next().html("choose a number in range");
+            } else {
+                $(this).next().html("");
+            }
+        }
+    });
+
+    //*********revolution submit**************** */
+    $("#change_revolution").click(function(){
+        var rev_time = parseInt( $("#rev_time").val());
+        var rev_chance = parseInt($("#rev_chance").val());
+        if(rev_time < min_rev_time || rev_time > max_rev_time || rev_chance <min_rev_chance || rev_chance> max_rev_chance){
+            //false inputs
+        }else{
+            destroyworld();
+            chanceOfLife = rev_chance;
+            rev_timing = rev_time;
+            buildWorld();
+        }
+
+
+    });
+
+    //*****************color chang***********/
+    $(".colorin").keydown(function(event){
+        var values = $(this).val();
+        if( ( event.keyCode != 8) & (parseInt(values.length) >= 8)){
+            console.log("more than 8");
+            return false;
+        }else{
+
+        }
+    });
+
+    $(".colorin").keyup(function(){
+        $(this).next().css("background-color","#"+$(this).val());
+    });
+
+    //***********color submit*******/
+    $("#change_color").click(function(){
+        var back_color = $("#back_color").val();
+        var live_color = $("#live_color").val();
+        var dead_color = $("#dead_color").val();
+        var style_content = "";
+        if(back_color && live_color && dead_color){
+            style_content += ".con_of_box{background-color: #"+ back_color +";}";
+            style_content += ".flex-container .box{background-color: #"+ dead_color +";}";
+            style_content += ".flex-container .box.live{background-color: #"+ live_color +";}";
+
+            $("#colorstyle").html("");
+            $("#colorstyle").html(style_content);
+        }
+    });
+
+    
 
     //*******************************************/
     //**************end  setting*****************/
