@@ -139,7 +139,6 @@ window.onload = function() {
                     past_tima[i]++;
                     if(past_tima[i] == 60){
                         past_tima[i] = 0
-                        past_tima[ i +1]++;
                     }else{
                         break;
                     }
