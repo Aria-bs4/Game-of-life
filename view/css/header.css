@@ -10,11 +10,42 @@
     display: flex;
     border: 1px solid var(--color3);
     overflow: hidden;
+    position: relative;
+}
+#panel_resize{
+    position: absolute;
+    top: -.8px;
+    transform: translate(1px,-1.2px);
+    right: 0px;
+    width: 27px;
+    height: 18px;
+    border: 2px solid var( --color3);
+    border-top: none;
+    z-index: 999;
+    background-color: var( --color1);
+    outline: none;
+    border-radius: 0 0 3px 3px;
+}
+
+#resize_span{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border: 2px solid var(--color4);
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%,-50%) rotate(45deg);
+    transition: all ease 600ms;
+    border-right: none;
+    border-bottom: none;
 }
 
 /***********************************************************/
 /****************     Setting List     *********************/
 /***********************************************************/
+.area_in_panelmain{
+    overflow: hidden;
+}
 div#settingList{
     width: 18%;
     height: 420px;
@@ -183,7 +214,7 @@ div#settingArea .areapaper .inpubox{
     line-height: 1rem;
 }
 
-.inpubox button:focus{
+button:focus{
     border: none;
     outline: none;
 }
@@ -191,6 +222,7 @@ div#settingArea .areapaper .inpubox{
 div#settingArea .areapaper .paperin_setting .inpubox .sub_btn{
     background-color: var(--color2);
     border: .8px solid var(--color3);
+    left: 0;
 }
 
 div#settingArea .areapaper .paperin_setting .inpubox .cancel_set{
@@ -275,3 +307,74 @@ div#settingArea .areapaper .paperin_setting .inpubox span.warning_span{
     top: 4px;
 }
 
+.inpubox button.format_color{
+    position: relative;
+    font-size: 12px;
+    color: var(--color4);
+    background-color: transparent;
+    padding: 0;
+
+}
+.inpubox button.format_color:hover{
+    color: var(--color4-1);
+}
+
+div#settingArea .areapaper .paperin_setting .inpubox .inputs.colorin{
+    margin-left: -2px;
+}
+
+div#settingArea .areapaper #colorpaper .inpubox span.warning_span{
+    margin-left: 23px;
+}
+
+.sharp{
+    margin-left: 12px;
+    color: var(--color3);
+}
+
+
+/* **************************************** */
+/* **************control_panel************** */
+/* **************************************** */
+
+#control_panel{
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    background-color: var(--color1);
+    border: 1px solid var(--color3);
+    border-top: none;
+    position: relative;
+}
+
+
+#control_panel .cp_box{
+    width: 31%;
+    margin: 0;
+    padding: 0;
+}
+
+#control_panel .cp_box button{
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    /* position: absolute; */
+    /* bottom: 5%; */
+    background-color: var(--color2);
+    color: var(--color4);
+    padding: 4px 15px;
+    font-size: 15px;
+    line-height: 1rem;
+}
+
+#control_panel .cp_box p{
+    display: inline;
+    color: var(--color4);
+}
+
+
+button:disabled{
+    background-color: var(--color3)!important;
+    cursor: default!important;
+}

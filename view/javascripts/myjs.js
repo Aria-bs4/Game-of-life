@@ -7,11 +7,14 @@ window.onload = function() {
     var horizental = 20;
     var chanceOfLife = 20;
     var rev_timing = 800;
-    var timer;
+    var timer , number_of_ev , timer2 ;
+    var milisecond = 0;
+    var past_tima = [0,0,0];
     var world = new Array();
     var newworld = new Array();
 
     //variable for settings world
+    var isclose = false;
     var h = $('#settings').offset().top;
     $('#forsetting').css("top", eval(h - 7));
     var isvisible = false;
@@ -52,12 +55,13 @@ window.onload = function() {
 
 
 
+    buildWorld();
     //*****************************************/
     //***************start game****************/
     //*****************************************/
 
 
-    buildWorld();
+    // buildWorld();
     
     
     // console.log(world.join('\n'));
@@ -79,7 +83,8 @@ window.onload = function() {
                 lifeBox.appendChild(box);
             }
         }
-        timer = setInterval(function(){ revolution() },rev_timing);
+        number_of_ev = 0;
+        //start_world();
     }
 
     function revolution(){
@@ -119,12 +124,56 @@ window.onload = function() {
                     box[num].classList.remove("live");
             }
         }
+        number_of_ev++ ; 
+        $("#total_evolution").html(number_of_ev);
     }
 
-    function destroyworld(){
-        clearInterval(timer);
-        $("#lifeBox").children().remove();
+    function start_world(){
+        timer = setInterval(function(){ revolution()},rev_timing);
+        timer2 = setInterval(function(){
+            // past_tima++;
+            milisecond++;
+            if(milisecond == 10){
+                milisecond = 0;
+                for(var i = 0 ; i < past_tima.length ; ++i){
+                    past_tima[i]++;
+                    if(past_tima[i] == 60){
+                        past_tima[i] = 0
+                        past_tima[ i +1]++;
+                    }else{
+                        break;
+                    }
+                }
+            }
+            $("#total_time").html(past_tima[2]+":"+past_tima[1]+":"+past_tima[0]+":"+milisecond);
+        },100);
+        $("#new_world").prop('disabled', true);
+        $("#pause_game").html("Pause");
+        $("#start_game").html("Stop");
     }
+
+    function destroyworld(clean = true){
+        pause_world();
+        $("#start_game").html("Start");
+        $("#pause_game").html("Pause");
+        number_of_ev = 0;
+        $("#total_evolution").html(number_of_ev);
+        $("#total_time").html("0:0:0:0");
+        milisecond = 0;
+        past_tima = [0,0,0];
+        $("#new_world").prop('disabled', false);
+        $("#pause_game").prop('disabled', true);
+        if(clean)
+            $("#lifeBox").children().remove();
+    }
+
+    function pause_world(){
+        clearInterval(timer);
+        clearInterval(timer2);
+        $("#pause_game").html("Unpause");
+    }
+
+    
 
     //******************************************/
     //***************end of game****************/
@@ -135,6 +184,35 @@ window.onload = function() {
     //******************************************/
     //***************start setting**************/
     //******************************************/
+    
+    //*****************panel resize******* */
+    $("#panel_resize").click(function(){
+        if(isclose){
+            $("#panel_main").animate({height : "422px"},600);
+            $("#resize_span").css("transform","translate(-50%,-50%) rotate(45deg)");
+
+            // it work and good to learn step
+            // $('#resize_span').animate({ borderSpacing: "45"  }, {
+            //     step: function(now,fx) {
+            //       $(this).css('transform','translate(-50%,-50%) rotate('+now+'deg)');  
+            //     },
+            //     duration:'2000'
+            // });
+            isclose = false;
+        }else{
+            $("#panel_main").animate({height : "20px"},600);
+            $("#resize_span").css("transform","translate(-50%,-50%) rotate(225deg)");
+
+            // $('#resize_span').animate({ borderSpacing: "-135"  }, {
+            //     duration:'5000',
+            //     step: function(now,fx) {
+            //       $(this).css('transform','translate(-50%,-50%) rotate('+now+'deg)');  
+            //     }
+            // });
+            isclose = true;
+        }
+        
+    });
    
     //***********animate options********/
     $('#settings').on( "click", function() {
@@ -215,7 +293,7 @@ window.onload = function() {
             //
             $("#settings span").hide(1000);
             $('.settingItem').each(function () {
-                $(this).animate({ opacity: "0", top: "150px" }, 500 + (items-- * 100), function () {
+                $(this).animate({ opacity: "0", top: "150px" }, 200 + (items-- * 100), function () {
                     if (items == 0) {
 
                         $('#selectArea').animate({ width: "0" }, 500, function () {
@@ -260,7 +338,8 @@ window.onload = function() {
                 //show the items in middle area
                 var items = $('.settingItem').length;
                 $('.settingItem').each(function () {
-                    $(this).animate({ opacity: "1", top: "0px" }, 300 + (items++ * 100));
+                    $(this).animate({ opacity: "1", top: "0px" }, 200 + (items * 100));
+                    ++items;
                 });
             });
             $('#selectArea').show();   
@@ -272,8 +351,8 @@ window.onload = function() {
             var ans = new Object();
             ans = {"0": store , "1": triger};
             store = triger = 0;
-            console.log("asn = " + ans);
-            console.log(ans);
+            // console.log("asn = " + ans);
+            // console.log(ans);
             return ans;
         }else {
             store = request;
@@ -313,14 +392,23 @@ window.onload = function() {
                $(this).next().html("cant be 0");
                //span should be you cant put zero size
                return false;
-           }
-           
+           } 
        }else if(keycode == 8){
-        
+
+       }else if(keycode == 40 || keycode == 38){
+            var numin = $(this).val();
+            if(keycode == 38)
+                ++numin;
+            if(keycode == 40)
+                --numin;
+            if(numin <= 0){
+                numin = 1;
+            }
+            $(this).val(numin);
        }else{
            // clinet input character
            $(this).next().html("just number");
-           console.log("character");
+           console.log(event.keyCode);
            return false;
        }
 
@@ -402,7 +490,7 @@ window.onload = function() {
         close_setting();
     });
 
-    //**********submmit setting world ********************
+    //**********click creat world ********************
     $('#save_world').on("click", function () {
         var size_input = $("input[type='radio']:checked").val();
 
@@ -478,13 +566,20 @@ window.onload = function() {
         if( ( event.keyCode != 8) & (parseInt(values.length) >= 8)){
             console.log("more than 8");
             return false;
-        }else{
-
         }
     });
 
     $(".colorin").keyup(function(){
         $(this).next().css("background-color","#"+$(this).val());
+    });
+
+    $(".colorin").on("paste",function(){
+        // console.log(event);
+        var pasteData = event.clipboardData.getData("text").length;
+        var len = $(this).val().length;
+        if ( len + pasteData > 10){
+            $(this).val("");
+        }
     });
 
     //***********color submit*******/
@@ -503,11 +598,48 @@ window.onload = function() {
         }
     });
 
+    //**************reset colors*********** */
+    $("#format_color").click(function(){
+        $("#back_color").val("1d3e53");
+        $("#live_color").val("254b62");
+        $("#dead_color").val("77abb7");
+        $(".colorin").keyup();
+    });
     
 
     //*******************************************/
     //**************end  setting*****************/
     //*******************************************/
+
+
+    //*******************************************/
+    //*********start and finish world************/
+    //*******************************************/
+
+    $("#start_game").click(function(){
+        var inner = $(this).html();
+        if(inner == "Start"){
+            start_world();
+            $("#pause_game").prop('disabled', false);
+        }else{
+            destroyworld(false);
+        }
+    });
+
+    $("#pause_game").click(function(){
+        var inner = $(this).html();
+        if(inner == "Pause"){
+            pause_world();
+        }else{
+            start_world();
+        }
+    });
+
+    $("#new_world").click(function(){
+        destroyworld();
+        buildWorld();
+    });
+
 
 
 };

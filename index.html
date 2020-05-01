@@ -13,15 +13,15 @@
 
 <body>
     <div class="container">
-        <div class="panel">
-            <div id='settingList'>
+        <div class="panel" id="panel_main">
+            <div id='settingList' class="area_in_panelmain">
                 <div id="gamePic">
                     <img src="view/pics/logo.png">
                 </div>
                 <div id="About" class="items newcolor"><span></span> About</div>
                 <div id="settings" class="items last newcolor"><span></span>Setings</div>
             </div>
-            <div id="selectArea">
+            <div id="selectArea" class="area_in_panelmain" >
                 <section id="forsetting">
                     <div class="settingItem newcolor" num="0">
                         <spna class="flash"></spna>World
@@ -30,7 +30,7 @@
                     <div class="settingItem newcolor" num="2">revolution</div>
                 </section>
             </div>
-            <div id='settingArea'>
+            <div id='settingArea' class="area_in_panelmain">
                 <section id="aboutArea" class="areapaper" whocalld="About">About</section>
                 <section id="settingChange" class="areapaper" whocalld="settings">
                     <!-- world setting -->
@@ -52,8 +52,8 @@
 
                             </div>
                             <div class="inpubox">Vertical :<br>
-                                <input type="text" id="worldvertical" class="inputs numeric" value="18"><span class="alarm"
-                                    id="verti_alarm"></span>
+                                <input type="text" id="worldvertical" class="inputs numeric" value="18">
+                                <span class="alarm" id="verti_alarm"></span>
                                 <span id="worldvertical_span" class="warning_span">this is span box</span>
                             </div>
                             <div class="inpubox">Horizontal :<br>
@@ -75,18 +75,25 @@
                     <div id="colorpaper" class="paperin_setting">
                         <div id="main_color" class="mainside">
                             <div class="inpubox">Background Color :<br>
+                                <span class="sharp">#</span>
                                 <input type="text" class="inputs colorin" id="back_color" value="1d3e53"><span class="color_box" id="back_color_alarm"></span>
+                                <span class="alarm" id="back_color_alarm"></span>
                                 <span id="back_color_span" class="warning_span">Format HEX</span>
                             </div>
                             <div class="inpubox">Live Cell Color :<br>
+                                <span class="sharp">#</span>
                                 <input type="text" class="inputs colorin" id="live_color" value="254b62"><span class="color_box" id="live_color_alarm"></span>
+                                <span class="alarm" id="live_color_alarm"></span>
                                 <span id="live_color_span" class="warning_span">Format HEX</span>
                             </div>
                             <div class="inpubox">Dead Cell Color :<br>
+                                <span class="sharp">#</span>
                                 <input type="text" class="inputs colorin" id="dead_color" value="77abb7"><span class="color_box" id="dead_color_alarm"></span>
+                                <span class="alarm" id="dead_color_alarm"></span>
                                 <span id="dead_color_span" class="warning_span">Format HEX</span>
                             </div>
                             <div class="inpubox" style="position: relative;">
+                                <button id="format_color" class="format_color">Reset colors</button>
                                 <button id="change_color" class="newcolor sub_btn">Finish</button>
                                 <button id="cancel_corol" class="cancel_set">Cancel</button></div>
                         </div>
@@ -118,6 +125,21 @@
                     </div>
                 </section>
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="control_panel" >
+            <button id="panel_resize"><span id="resize_span"></span></button>
+            <div class="cp_box">
+                <button id="start_game" class="newcolor">Start</button>
+                <button id="pause_game" class="newcolor" disabled>Pause</button>
+                <button id="new_world" class="newcolor">New World</button>
+            </div>
+            <div class="cp_box">
+                <p>Time : </p><p id="total_time">0:0:0:0</p>
+            </div>
+            <div class="cp_box"> <p>Number of evolution : </p><p id="total_evolution">0</p></div>
         </div>
     </div>
 
