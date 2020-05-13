@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Game of life</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/huebee@2/dist/huebee.min.css">
     <link href="view/css/style.css" rel="stylesheet" type="text/css">
     <style id="stylebox"></style>
     <style id="colorstyle"></style>
@@ -76,19 +77,19 @@
                         <div id="main_color" class="mainside">
                             <div class="inpubox">Background Color :<br>
                                 <span class="sharp">#</span>
-                                <input type="text" class="inputs colorin" id="back_color" value="1d3e53"><span class="color_box" id="back_color_alarm"></span>
+                                <input type="text" class="inputs colorin" id="back_color" value="1d3e53"><span class="color_box current-color-back" id="back_color_alarm"></span>
                                 <span class="alarm" id="back_color_alarm"></span>
                                 <span id="back_color_span" class="warning_span">Format HEX</span>
                             </div>
                             <div class="inpubox">Live Cell Color :<br>
                                 <span class="sharp">#</span>
-                                <input type="text" class="inputs colorin" id="live_color" value="254b62"><span class="color_box" id="live_color_alarm"></span>
+                                <input type="text" class="inputs colorin" id="live_color" value="254b62"><span class="color_box current-color-live" id="live_color_alarm"></span>
                                 <span class="alarm" id="live_color_alarm"></span>
                                 <span id="live_color_span" class="warning_span">Format HEX</span>
                             </div>
                             <div class="inpubox">Dead Cell Color :<br>
                                 <span class="sharp">#</span>
-                                <input type="text" class="inputs colorin" id="dead_color" value="77abb7"><span class="color_box" id="dead_color_alarm"></span>
+                                <input type="text" class="inputs colorin" id="dead_color" value="77abb7"><span class="color_box current-color-dead" id="dead_color_alarm"></span>
                                 <span class="alarm" id="dead_color_alarm"></span>
                                 <span id="dead_color_span" class="warning_span">Format HEX</span>
                             </div>
@@ -154,6 +155,7 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/huebee@2/dist/huebee.pkgd.min.js"></script>
 
     <script src="view/javascripts/myjs.js"></script>
     <!-- <script src="view/javascripts/setting.js"></script> -->

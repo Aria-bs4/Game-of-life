@@ -44,7 +44,7 @@
 /****************     Setting List     *********************/
 /***********************************************************/
 .area_in_panelmain{
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 div#settingList{
     width: 18%;
@@ -322,6 +322,7 @@ div#settingArea .areapaper .paperin_setting .inpubox span.warning_span{
     border: .3px solid var(--color4-1);
     position: relative;
     top: 4px;
+    cursor: pointer;
 }
 
 .inpubox button.format_color{
@@ -395,3 +396,6 @@ button:disabled{
     background-color: var(--color3)!important;
     cursor: default!important;
 }
+
+
+

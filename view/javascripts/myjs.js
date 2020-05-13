@@ -641,6 +641,49 @@ window.onload = function() {
         buildWorld();
     });
 
+    //*******************************************/
+    //*********     hubee color      ************/
+    //*******************************************/
+
+    var hueb_back = new Huebee( '.current-color-back', {
+    // options
+        notation: 'hex',
+        hues: 18,
+        shades: 3,
+        saturations: 3,
+        setText: false,
+    });
+
+    var hueb_live = new Huebee( '.current-color-live', {
+    // options
+        notation: 'hex',
+        hues: 18,
+        shades: 3,
+        saturations: 3,
+        setText: false,
+    });
+
+    var hueb_dead = new Huebee( '.current-color-dead', {
+    // options
+        notation: 'hex',
+        hues: 18,
+        shades: 3,
+        saturations: 3,
+        setText: false,
+    });
+
+
+    hueb_back.on( 'change', function( color ) {
+        $("#back_color").val(color.replace("#",""));
+    });
+
+    hueb_live.on( 'change', function( color ) {
+        $("#live_color").val(color.replace("#",""));
+    });
+
+    hueb_dead.on( 'change', function( color ) {
+        $("#dead_color").val(color.replace("#",""));
+    });
 
 
 };
