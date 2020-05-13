@@ -1,4 +1,6 @@
 window.onload = function() {
+
+    $(".iframe").attr("src","https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life").removeClass("iframe");
     //decalare variables
 
     //variable to build world
