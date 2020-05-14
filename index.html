@@ -7,6 +7,7 @@
     <title>Game of life</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/huebee@2/dist/huebee.min.css">
+    <link rel="stylesheet" href="view/css/farbtastic.css">
     <link href="view/css/style.css" rel="stylesheet" type="text/css">
     <style id="stylebox"></style>
     <style id="colorstyle"></style>
@@ -28,7 +29,7 @@
                         <spna class="flash"></spna>World
                     </div>
                     <div class="settingItem newcolor" num="1">Color</div>
-                    <div class="settingItem newcolor" num="2">revolution</div>
+                    <div class="settingItem newcolor" num="2">Evolution</div>
                 </section>
             </div>
             <div id='settingArea' class="area_in_panelmain">
@@ -99,13 +100,14 @@
                                 <button id="cancel_corol" class="cancel_set">Cancel</button></div>
                         </div>
                         <div id="side_color" class="sidepaper">
-                            sidebox and image
+                            <span class="sharpFor">#</span>
+                            <input type="text" id="colorS" name="color" value="123456" /><div id="picker"></div>
                         </div>
                     </div>
                     <!-- revolution setting -->
                     <div id="revolutionpaper" class="paperin_setting">
                         <div id="main_revolution" class="mainside">
-                            <div class="inpubox">Revolution Time :<br>
+                            <div class="inpubox">Evolution Time :<br>
                                 <input type="text" class="inputs numeric" id="rev_time" value="800"><span class="alarm" id="rev_time_alarm"></span>
                                 <span id="rev_time_span" class="warning_span">min = 500&emsp;max = 5000</span>
                             </div>
@@ -136,6 +138,7 @@
                 <button id="start_game" class="newcolor">Start</button>
                 <button id="pause_game" class="newcolor" disabled>Pause</button>
                 <button id="new_world" class="newcolor">New World</button>
+                <button id="next_world" class="newcolor">Next</button>
             </div>
             <div class="cp_box">
                 <p>Time : </p><p id="total_time">0:0:0:0</p>
@@ -156,6 +159,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/huebee@2/dist/huebee.pkgd.min.js"></script>
+    <script src="view/javascripts/farbtastic.js"></script>
 
     <script src="view/javascripts/myjs.js"></script>
     <!-- <script src="view/javascripts/setting.js"></script> -->

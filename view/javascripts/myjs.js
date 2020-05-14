@@ -9,9 +9,13 @@ window.onload = function() {
     var horizental = 20;
     var chanceOfLife = 20;
     var rev_timing = 800;
+    var stand_time = rev_timing%100;
+    var main_stand_time = 0
     var timer , number_of_ev , timer2 ;
     var milisecond = 0;
+    var last_milisecond = 0;
     var past_tima = [0,0,0];
+    var last_time = [0,0,0];
     var world = new Array();
     var newworld = new Array();
 
@@ -131,29 +135,23 @@ window.onload = function() {
     }
 
     function start_world(){
-        timer = setInterval(function(){ revolution()},rev_timing);
         timer2 = setInterval(function(){
-            // past_tima++;
-            milisecond++;
-            if(milisecond == 10){
-                milisecond = 0;
-                for(var i = 0 ; i < past_tima.length ; ++i){
-                    past_tima[i]++;
-                    if(past_tima[i] == 60){
-                        past_tima[i] = 0
-                    }else{
-                        break;
-                    }
-                }
-            }
-            $("#total_time").html(past_tima[2]+":"+past_tima[1]+":"+past_tima[0]+":"+milisecond);
+            main_stand_time += stand_time;
+            totla_timer();
         },100);
+        timer = setInterval(function(){
+            last_milisecond = milisecond; 
+            last_time = past_tima;
+            //console.log(past_tima[2]+":"+past_tima[1]+":"+past_tima[0]+":"+milisecond);
+            revolution();
+        },rev_timing);
         $("#new_world").prop('disabled', true);
         $("#pause_game").html("Pause");
         $("#start_game").html("Stop");
     }
 
     function destroyworld(clean = true){
+        // if clean it remove all world
         pause_world();
         $("#start_game").html("Start");
         $("#pause_game").html("Pause");
@@ -162,8 +160,11 @@ window.onload = function() {
         $("#total_time").html("0:0:0:0");
         milisecond = 0;
         past_tima = [0,0,0];
+        main_stand_time =0;
+        last_time = [0,0,0];
         $("#new_world").prop('disabled', false);
         $("#pause_game").prop('disabled', true);
+        $("#next_world").prop('disabled', false);
         if(clean)
             $("#lifeBox").children().remove();
     }
@@ -172,7 +173,45 @@ window.onload = function() {
         clearInterval(timer);
         clearInterval(timer2);
         $("#pause_game").html("Unpause");
+        $("#next_world").prop('disabled', false);
     }
+
+    function totla_timer(){
+        if(main_stand_time/100 >= 1){
+            milisecond++;
+            main_stand_time = main_stand_time % 100;
+        }else{ 
+            milisecond++;
+        }
+        if(milisecond == 10){
+            milisecond = 0;
+            for(var i = 0 ; i < past_tima.length ; ++i){
+                past_tima[i]++;
+                if(past_tima[i] == 60){
+                    past_tima[i] = 0
+                }else{
+                    break;
+                }
+            }
+        }
+        $("#total_time").html(past_tima[2]+":"+past_tima[1]+":"+past_tima[0]+":"+milisecond);
+    };
+
+    function total_last_timer(){
+        last_milisecond++;
+        if(last_milisecond == 10){
+            last_milisecond = 0;
+            for(var i = 0 ; i < last_time.length ; ++i){
+                last_time[i]++;
+                if(last_time[i] == 60){
+                    last_time[i] = 0
+                }else{
+                    break;
+                }
+            }
+        }
+        $("#total_time").html(last_time[2]+":"+last_time[1]+":"+last_time[0]+":"+last_milisecond);
+    };
 
     
 
@@ -555,6 +594,7 @@ window.onload = function() {
             destroyworld();
             chanceOfLife = rev_chance;
             rev_timing = rev_time;
+            stand_time = rev_timing % 100;
             buildWorld();
         }
 
@@ -620,10 +660,17 @@ window.onload = function() {
     $("#start_game").click(function(){
         var inner = $(this).html();
         if(inner == "Start"){
+            past_tima = last_time ;
+            milisecond = last_milisecond;
             start_world();
             $("#pause_game").prop('disabled', false);
+            $("#next_world").prop('disabled', true);
         }else{
             destroyworld(false);
+            milisecond = 0;
+            last_milisecond = 0;
+            past_tima = [0,0,0];
+            last_time = [0,0,0];
         }
     });
 
@@ -632,6 +679,11 @@ window.onload = function() {
         if(inner == "Pause"){
             pause_world();
         }else{
+            milisecond = last_milisecond;
+            past_tima[0]=last_time[0];
+            past_tima[1]=last_time[1];
+            past_tima[2]=last_time[2];
+            $("#total_time").html(last_time[2]+":"+last_time[1]+":"+last_time[0]+":"+last_milisecond);
             start_world();
         }
     });
@@ -639,6 +691,19 @@ window.onload = function() {
     $("#new_world").click(function(){
         destroyworld();
         buildWorld();
+    });
+
+    $("#next_world").click(function(){
+        revolution();
+        for(var i =0 ; i < Math.floor(rev_timing/100) ; ++i ){
+            total_last_timer();
+        };
+        main_stand_time += stand_time;
+        if(main_stand_time/100 >= 1){
+            total_last_timer();
+            main_stand_time = main_stand_time % 100;
+        }
+        console.log("main stand time:" + main_stand_time);
     });
 
     //*******************************************/
@@ -685,5 +750,18 @@ window.onload = function() {
         $("#dead_color").val(color.replace("#",""));
     });
 
+    //*******************************************/
+    //*******  Finish hubee color    ***********/
+    //*******************************************/
+
+    //*******************************************/
+    //***********   color platte     ************/
+    //*******************************************/
+
+    $('#picker').farbtastic('#colorS');
+
+    $("#colorS").click(function(){
+        this.select();
+    });
 
 };
