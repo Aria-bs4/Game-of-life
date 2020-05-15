@@ -23,7 +23,7 @@
                 <div id="About" class="items newcolor"><span></span> About</div>
                 <div id="settings" class="items last newcolor"><span></span>Setings</div>
             </div>
-            <div id="selectArea" class="area_in_panelmain" >
+            <div id="selectArea" class="area_in_panelmain">
                 <section id="forsetting">
                     <div class="settingItem newcolor" num="0">
                         <spna class="flash"></spna>World
@@ -33,7 +33,8 @@
                 </section>
             </div>
             <div id='settingArea' class="area_in_panelmain">
-                <section id="aboutArea" class="areapaper" whocalld="About"><iframe class="iframe" src=""></iframe></section>
+                <section id="aboutArea" class="areapaper" whocalld="About"><iframe class="iframe" src=""></iframe>
+                </section>
                 <section id="settingChange" class="areapaper" whocalld="settings">
                     <!-- world setting -->
                     <div id="worldpaper" class="paperin_setting">
@@ -59,8 +60,8 @@
                                 <span id="worldvertical_span" class="warning_span">this is span box</span>
                             </div>
                             <div class="inpubox">Horizontal :<br>
-                                <input type="text" id="worldhorizontal" class="inputs numeric" value="15"><span class="alarm"
-                                    id="horiz_alarm"></span>
+                                <input type="text" id="worldhorizontal" class="inputs numeric" value="15"><span
+                                    class="alarm" id="horiz_alarm"></span>
                                 <span id="worldhorizontal_span" class="warning_span">min = 15&emsp;max = 50</span>
                             </div>
                             <div class="inpubox" style="position: relative;">
@@ -78,19 +79,22 @@
                         <div id="main_color" class="mainside">
                             <div class="inpubox">Background Color :<br>
                                 <span class="sharp">#</span>
-                                <input type="text" class="inputs colorin" id="back_color" value="1d3e53"><span class="color_box current-color-back" id="back_color_alarm"></span>
+                                <input type="text" class="inputs colorin" id="back_color" value="1d3e53"><span
+                                    class="color_box current-color-back" id="back_color_alarm"></span>
                                 <span class="alarm" id="back_color_alarm"></span>
                                 <span id="back_color_span" class="warning_span">Format HEX</span>
                             </div>
                             <div class="inpubox">Live Cell Color :<br>
                                 <span class="sharp">#</span>
-                                <input type="text" class="inputs colorin" id="live_color" value="254b62"><span class="color_box current-color-live" id="live_color_alarm"></span>
+                                <input type="text" class="inputs colorin" id="live_color" value="254b62"><span
+                                    class="color_box current-color-live" id="live_color_alarm"></span>
                                 <span class="alarm" id="live_color_alarm"></span>
                                 <span id="live_color_span" class="warning_span">Format HEX</span>
                             </div>
                             <div class="inpubox">Dead Cell Color :<br>
                                 <span class="sharp">#</span>
-                                <input type="text" class="inputs colorin" id="dead_color" value="77abb7"><span class="color_box current-color-dead" id="dead_color_alarm"></span>
+                                <input type="text" class="inputs colorin" id="dead_color" value="77abb7"><span
+                                    class="color_box current-color-dead" id="dead_color_alarm"></span>
                                 <span class="alarm" id="dead_color_alarm"></span>
                                 <span id="dead_color_span" class="warning_span">Format HEX</span>
                             </div>
@@ -101,18 +105,21 @@
                         </div>
                         <div id="side_color" class="sidepaper">
                             <span class="sharpFor">#</span>
-                            <input type="text" id="colorS" name="color" value="123456" /><div id="picker"></div>
+                            <input type="text" id="colorS" name="color" value="123456" />
+                            <div id="picker"></div>
                         </div>
                     </div>
                     <!-- revolution setting -->
                     <div id="revolutionpaper" class="paperin_setting">
                         <div id="main_revolution" class="mainside">
                             <div class="inpubox">Evolution Time :<br>
-                                <input type="text" class="inputs numeric" id="rev_time" value="800"><span class="alarm" id="rev_time_alarm"></span>
+                                <input type="text" class="inputs numeric" id="rev_time" value="800"><span class="alarm"
+                                    id="rev_time_alarm"></span>
                                 <span id="rev_time_span" class="warning_span">min = 500&emsp;max = 5000</span>
                             </div>
                             <div class="inpubox">Chanse of live :<br>
-                                <input type="text" class="inputs numeric" id="rev_chance" value="20"><span class="alarm" id="rev_chance_alarm" ></span>
+                                <input type="text" class="inputs numeric" id="rev_chance" value="20"><span class="alarm"
+                                    id="rev_chance_alarm"></span>
                                 <span id="rev_chance_span" class="warning_span">min = 10&emsp;max = 70</span>
                             </div>
                             <div class="inpubox"></div>
@@ -132,7 +139,7 @@
     </div>
 
     <div class="container">
-        <div id="control_panel" >
+        <div id="control_panel">
             <button id="panel_resize"><span id="resize_span"></span></button>
             <div class="cp_box">
                 <button id="start_game" class="newcolor">Start</button>
@@ -141,9 +148,13 @@
                 <button id="next_world" class="newcolor">Next</button>
             </div>
             <div class="cp_box">
-                <p>Time : </p><p id="total_time">0:0:0:0</p>
+                <p>Time : </p>
+                <p id="total_time">0:0:0:0</p>
             </div>
-            <div class="cp_box"> <p>Number of evolution : </p><p id="total_evolution">0</p></div>
+            <div class="cp_box">
+                <p>Number of evolution : </p>
+                <p id="total_evolution">0</p>
+            </div>
         </div>
     </div>
 
@@ -153,11 +164,42 @@
         </div>
     </div>
 
+    <footer id="footer">
+        <div class="container ">
+            <div class="footer">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="tnx-jadi incol">
+                            <h5>Special tnx</h5>
+                            <p><a href="https://jadi.net/" target="_blank">jadi</a></p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="repo incol">
+                            <h5>Repository</h5>
+                            <p><a href="https://github.com/Aria-bs4/Game-of-life.git" target="_blank">Github</a></p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="contac incol">
+                            <h5>Contact Us</h5>
+                            <ul>
+                                <li><i class="fas fa-envelope"></i>&emsp;aria@yahoo.com</li>
+                                <li><i class="fab fa-instagram"></i>&emsp;aria_bs4</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="view/javascripts/all.min.js"></script>
     <script src="https://unpkg.com/huebee@2/dist/huebee.pkgd.min.js"></script>
     <script src="view/javascripts/farbtastic.js"></script>
 
