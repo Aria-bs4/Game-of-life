@@ -2,7 +2,7 @@ window.onload = function() {
     
     if($( document ).width() > 992){
         $(".top-loader").remove();
-        $("body").css("overflow","scroll");
+        $("body").css("overflow","auto");
     }else{
         $(".loader").html("we are sorry. screen of your device is too small<br>please use landscape or a bigger screen.").removeClass("loader").addClass("small-screen");
     }
