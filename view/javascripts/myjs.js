@@ -1,4 +1,11 @@
 window.onload = function() {
+    
+    if($( document ).width() > 992){
+        $(".top-loader").remove();
+        $("body").css("overflow","scroll");
+    }else{
+        $(".loader").html("we are sorry. screen of your device is too small<br>please use landscape or a bigger screen.").removeClass("loader").addClass("small-screen");
+    }
 
     $(".iframe").attr("src","https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life").removeClass("iframe");
     //decalare variables
