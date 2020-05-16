@@ -684,6 +684,7 @@ window.onload = function() {
             past_tima[1]=last_time[1];
             past_tima[2]=last_time[2];
             $("#total_time").html(last_time[2]+":"+last_time[1]+":"+last_time[0]+":"+last_milisecond);
+            $("#next_world").prop('disabled', true);
             start_world();
         }
     });

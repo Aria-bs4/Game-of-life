@@ -121,7 +121,7 @@ div#selectArea .settingItem{
     color: var(--color4);
     font-size: 14px;
     text-align: center;
-    padding: 10px;
+    padding: 10px 0px;
     border-top: 1px solid var(--color3);
     border-bottom: none;
     cursor: pointer;
@@ -384,6 +384,7 @@ div#settingArea .areapaper #colorpaper .inpubox span.warning_span{
     padding: 4px 15px;
     font-size: 15px;
     line-height: 1rem;
+    margin: 3px 0 0 0;
 }
 
 #control_panel .cp_box p{
